@@ -46,3 +46,16 @@ update-alternatives --install /usr/bin/wsgen wsgen $JAVA_FOLDER/bin/wsgen $ALTER
 update-alternatives --install /usr/bin/wsimport wsimport $JAVA_FOLDER/bin/wsimport $ALTERNATIVE_NUMBER
 update-alternatives --install /usr/bin/xjc xjc $JAVA_FOLDER/bin/xjc $ALTERNATIVE_NUMBER
 update-alternatives --install /usr/bin/jexec jexec $JAVA_FOLDER/jre/lib/jexec $ALTERNATIVE_NUMBER
+
+# Add plugins to browsers
+mkdir -p /usr/lib/mozilla/plugins
+cd /usr/lib/mozilla/plugins && ln -s $JAVA_FOLDER/jre/lib/amd64/libnpjp2.so
+echo "Firefox plugin set"
+
+mkdir -p /opt/google/chrome/plugins
+cd /opt/google/chrome/plugins && ln -s $JAVA_FOLDER/jre/lib/amd64/libnpjp2.so
+echo "Chrome plugin set"
+
+mkdir -p /usr/lib/chromium-browser/plugins
+cd /usr/lib/chromium-browser/plugins && ln -s $JAVA_FOLDER/jre/lib/amd64/libnpjp2.so
+echo "Chromium plugin set"
